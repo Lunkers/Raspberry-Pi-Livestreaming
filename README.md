@@ -16,7 +16,7 @@ This will update the package list.
 ### Installing our web server
 Then, we install `nginx` by typing:
 ```
-sudo apt-get nginx
+sudo apt-get install nginx
 ```
 To check that nginx was installed correctly, enter 
 ```
@@ -30,7 +30,7 @@ We'll come back to nginx later, but for now this is enough.
 FFMPEG is a great piece of software for video and audio processing. Provided that you take the time to learn it, it can bascially be your one-stop shop for media processing and encoding.
 To install FFMPEG, enter 
 ```
-sudo apt install ffmpeg
+sudo apt-get install ffmpeg
 ```
 into the terminal.
 
