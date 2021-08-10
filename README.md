@@ -34,7 +34,7 @@ sudo apt-get install ffmpeg
 ```
 into the terminal.
 
-Next, we need to very that the proper encoders are installed. To do so, enter 
+Next, we need to verify that the proper encoders are installed. To do so, enter 
 ```
 ffmpeg -encoders | grep 264
 ``` 
