@@ -113,7 +113,7 @@ VIDEO_OPTIONS="-vf scale=1280:720 -c:v libx264 -b:v 1M -pix_fmt yuv420p -r 30"
 
 `-b:v 1M` sets the video bitrate to 1Mbps. You can change this value if you want to; higher values will lead to higher quality video (but larger files!) and vice versa for lower values.
 
-`-pix_fmt yuv420p` sets the pixel format to 4:2:0 YUV. We specify this here for compatibility. Some players need this information to be encoded in the header, or else they will refuse to play the file. If we do not set this, the pixel format of the input stream will be copied.
+`-pix_fmt yuv420p` sets the pixel format to 4:2:0 YUV, with progressive scanning. We specify this here for compatibility. Some players need this information to be encoded in the header, or else they will refuse to play the file. If we do not set this, the pixel format of the input stream will be copied.
 
 `-r 30` sets the frame rate to 30fps. You can change this value depending on what framerate you want for your stream. NOTE: if you raise the frame rate, you'll probably want to raise your bitrate as well.
 
