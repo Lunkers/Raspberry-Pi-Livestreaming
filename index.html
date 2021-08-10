@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Raspberry pi live stream</title>
+</head>
+<!--Load the HLS.js library from CDN-->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<body>
+    <video id="video" autoplay="true" controls="controls"></video>
+    <script>
+        if (Hls.isSupported()) {
+            var video = document.getElementById('video');
+            var hls = new Hls();
+            // bind video element to HLS object
+            hls.attachMedia(video);
+            // when the media has been attached, we start loading the stream
+            hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+                console.log("media and HLS.js are now bound!");
+                hls.loadSource("http://{YOUR_SERVER_ADRESS}/live/livestream.m3u8");
+                hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+                    console.log("manifest loaded, found " + data.levels.length + " quality levels");
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
