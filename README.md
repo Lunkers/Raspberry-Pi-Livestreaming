@@ -28,7 +28,6 @@ We'll come back to nginx later, but for now this is enough.
 
 ### Installing FFMPEG
 FFMPEG is a great piece of software for video and audio processing. Provided that you take the time to learn it, it can bascially be your one-stop shop for media processing and encoding.
-Since we want encoding to be fast (and not take up unecessary CPU resources), we will be using the hardware encoder in the raspberry pi.
 To install FFMPEG, enter 
 ```
 sudo apt install ffmpeg
