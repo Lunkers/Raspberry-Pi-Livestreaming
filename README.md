@@ -78,6 +78,34 @@ with the ip adress of your webserver (don't use localhost here!).
 
 Now you should be able to enter the IP adress of your pi in into your browser, and the stream should start playing! There might be a slight delay depending on how fast FFMPEG encodes the stream and generates the manifest and video segments, but that should be fine.
 
+## Troubleshooting
+As there are a couple moving parts to this, I'll add some general troubleshooting steps to take.
+
+### Checking for video sources
+Your webcam might not automatically be assigned to `/dev/video0`. To check the assigned location of your input device, enter:
+
+```
+ls -ltrh /dev/video*
+
+```
+into the terminal. If the kernel can find any connected video devices, they should show up in this list. If `/dev/video0` isn't in the list, edit `stream.sh` so that `VIDEO_SOURCE` refers to the correct device.
+
+### Checking that FFMPEG can process the camera input (connecting PI to display required)
+If you want to check that FFMPEG can handle the input, enter `ffplay /dev/video0` into the terminal. You should see a window displaying your webcam video.
+NOTE: this only works if you're on the pi itself connected to a display, as SDL doesn't play well with SSH connections.
+
+### Checking that the stream is working
+You can use VLC to verify that the stream is working correctly and is reachable from the server.
+To do this, open VLC, then choose: media > open network stream. Then, paste:
+
+```
+http://{PI_IP_ADRESS}/live/livestream.m3u8
+
+```
+into the terminal. If everyhing's routed correctly, you should see the stream in the VLC player. NOTE: if you're doing this on the pi itself with a connected display instead of using ssh, you can replace `{PI_IP_ADRESS}` with `localhost`.
+
+### Stream works, but isn't shown on the web page
+This is probably due to certificate or routing issues. Check that your routing is correct, and google any errors that show up in the dev console of your broswer. I'm not an expert on nginx, and can't really help you more than that. 
 
 ## Extra: Dechiphering the FFMPEG command
 As bonus, let's walk through the bash script in `stream.sh`!
